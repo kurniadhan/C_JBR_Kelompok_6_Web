@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Majestic Admin</title>
   <!-- plugins:css -->
+  
   <link rel="stylesheet" href="{{asset('Frontend/vendors/mdi/css/materialdesignicons.min.css')}}">
   <link rel="stylesheet" href="{{asset('Frontend/vendors/base/vendor.bundle.base.css')}}">
   <!-- endinject -->
@@ -18,3 +19,6 @@
   <!-- endinject -->
   <link rel="shortcut icon" href="{{asset('Frontend/images/favicon.png')}}" />
 </head>
+
+  
+    <!-- partial -->
