@@ -1,9 +1,15 @@
-@include('admin/layouts/header')
-@include('admin/layouts/navbar')
-@include('admin/layouts/sidebar')
+<!-- Header -->
+@include('admin/layouts.header')
 
+<!-- Navbar -->
+@include('admin/layouts.navbar')
+
+<!-- Sidebar -->
+@include('admin/layouts.sidebar')
+
+<!-- Content -->
 <div class="main-panel">
-  @yield('content')
-</div>
+	@yield('content')
 
-@include('admin/layouts/footer')
+<!-- Footer -->
+@include('admin/layouts.footer')
