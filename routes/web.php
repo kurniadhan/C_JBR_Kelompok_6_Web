@@ -19,6 +19,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('Admin');
 
+Route::get('/', function () {
+   return view('user.landing');
+})->name('landing');
+
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //--------------------- Admin ----------------------//

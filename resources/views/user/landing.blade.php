@@ -1,13 +1,13 @@
 @extends('user.layouts.template')
 @section('content')
 <div class="inner cover">
-    <h1 class="cover-heading">JUDUL KEGIATAN MAHASISWA</h1>
-    <p class="lead cover-copy">Deskripsi Kegiatan.</p>
-    <p class="lead"><button type="button" class="btn btn-lg btn-default btn-notify" data-toggle="modal" data-target="#subscribeModal">Beritahu dan Undang Saya !</button></p>
+    <h1 class="cover-heading">Sistem Informasi Kegiatan Mahasiswa</h1>
+    <p class="lead cover-copy">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <!--p class="lead"><button type="button" class="btn btn-lg btn-default btn-notify" data-toggle="modal" data-target="#subscribeModal">Beritahu dan Undang Saya !</button></p-->
   </div>
   <div class="mastfoot">
     <div class="inner">
-      <p>&copy; Your Desaign .</p>
+      <p>&copy; Your Design .</p>
     </div>
   </div>
   <div class="modal fade" id="subscribeModal" tabindex="-1" role="dialog" aria-labelledby="subscribeModalLabel" aria-hidden="true">
