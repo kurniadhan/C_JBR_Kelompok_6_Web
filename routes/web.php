@@ -13,10 +13,53 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view ('admin.dashboard');
-});
+//--------------------- Main Route ---------------------//
 
-Route::group(['namespace' => 'Frontend'], function(){
-    Route::get('dashboard','Dashboard@index');
-});
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('Admin');
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//--------------------- Admin ----------------------//
+
+Route::get('/admin', function () {
+   return view('admin.admin');
+})->name('admin');
+
+Route::get('/tambah_admin', function () {
+   return view('admin.tambahadmin');
+})->name('tambahAdmin');
+
+//------------------- End Admin --------------------//
+
+//------------------- Kegiatan ---------------------//
+
+Route::get('/kegiatan', function () {
+   return view('admin.kegiatan');
+})->name('kegiatan');
+
+Route::get('/tambah_kegiatan', function () {
+   return view('admin.tambahkegiatan');
+})->name('tambahKegiatan');
+
+//---------------- End Kegiatan --------------------//
+
+//------------------- Riwayat ---------------------//
+
+Route::get('/riwayat', function () {
+   return view('admin.riwayat');
+})->name('riwayatKegiatan');
+
+//---------------- End Riwayat --------------------//
+
+//------------------- End Main Route -------------------//
+
+
+// Route::get('/error', function(){
+// 	return view('error');
+// })->name('error');
+
+// Route::get('/laravel', function () {
+//     return view ('welcome');
+// });
