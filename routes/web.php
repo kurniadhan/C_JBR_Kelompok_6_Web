@@ -63,3 +63,7 @@ Route::get('/riwayat', function () {
 // Route::get('/laravel', function () {
 //     return view ('welcome');
 // });
+
+Route::get('/user', function () {
+   return view('user.page');
+})->name('user');
