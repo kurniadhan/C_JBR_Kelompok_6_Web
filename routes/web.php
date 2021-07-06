@@ -21,6 +21,14 @@ Route::get('/', function () {
    return view('user.landing');
 })->name('homepage');
 
+Route::get('/aboutme', function(){
+   return view('user.aboutme');
+})->name('aboutme');
+
+Route::get('/contact', function(){
+   return view('user.contact');
+})->name('contact');
+
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard')->middleware('Admin');
 
 //--------------------- Admin ----------------------//

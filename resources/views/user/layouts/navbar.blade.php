@@ -5,9 +5,9 @@
       <div class="row align-items-start">
         <div class="col-md-2">
           <ul class="custom-menu">
-            <li class="active"><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li class="active"><a href="{{url('')}}">Home</a></li>
+            <li><a href="{{url('aboutme')}}">About Me</a></li>
+            <li><a href="{{url('contact')}}">Contact</a></li>
           </ul>
         </div>
         <div class="col-md-6 d-none d-md-block  mr-auto">
