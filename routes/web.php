@@ -17,34 +17,28 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('Admin');
-
 Route::get('/', function () {
    return view('user.landing');
-})->name('landing');
+})->name('homepage');
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard')->middleware('Admin');
 
 //--------------------- Admin ----------------------//
 
-Route::get('/admin', function () {
-   return view('admin.admin');
-})->name('admin');
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
 
-Route::get('/tambah_admin', function () {
-   return view('admin.tambahadmin');
-})->name('tambahAdmin');
+Route::get('/tambah_admin', [App\Http\Controllers\AdminController::class, 'create'])->name('tambahAdmin');
 
 //------------------- End Admin --------------------//
 
 //------------------- Kegiatan ---------------------//
 
 Route::get('/kegiatan', function () {
-   return view('admin.kegiatan');
+   return view('admin/kegiatan.index');
 })->name('kegiatan');
 
 Route::get('/tambah_kegiatan', function () {
-   return view('admin.tambahkegiatan');
+   return view('admin/kegiatan.create');
 })->name('tambahKegiatan');
 
 //---------------- End Kegiatan --------------------//
@@ -58,16 +52,3 @@ Route::get('/riwayat', function () {
 //---------------- End Riwayat --------------------//
 
 //------------------- End Main Route -------------------//
-
-
-// Route::get('/error', function(){
-// 	return view('error');
-// })->name('error');
-
-// Route::get('/laravel', function () {
-//     return view ('welcome');
-// });
-
-Route::get('/user', function () {
-   return view('user.page');
-})->name('user');

@@ -15,11 +15,20 @@ class CreateKegiatanTable extends Migration
     {
         Schema::create('kegiatan', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_kegiatan');
-            $table->integer('kategori')->unsigned()->default(1);
+            $table->string('judul_kegiatan');
+            $table->string('jenis');
+            $table->string('kategori');
+            $table->integer('prodi');
+            $table->string('nama_pemateri');
+            $table->date('buka_registrasi');
+            $table->date('tutup_registrasi');
             $table->date('tgl_pelaksanaan');
+            $table->string('jam_mulai');
+            $table->string('jam_selesai');
             $table->longText('deskripsi');
             $table->string('contact_person', 15);
+            $table->string('nama_foto');
+            $table->string('link_meet');
             $table->integer('status')->unsigned()->default(1);
             $table->timestamps();
         });

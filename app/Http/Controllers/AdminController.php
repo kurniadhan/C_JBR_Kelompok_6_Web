@@ -2,28 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB,
-    App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use App\Models\Admin;
+use File;
 
 class AdminController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('auth');
+
     }
 
     public function index()
     {
-      $admin = DB::table('admin')->get();
-      return view('admin/admin', compact('admin'));
+      $data = DB::table('users')->get();
+      return view('admin/admin.index', compact('data'));
     }
 
     public function create()
     {
-      $pengalaman_kerja = null;
-      $admin_lecturer = "Menambahkan";
-      return view('admin/admin.create', compact('pengalaman_kerja','admin_lecturer'));
+      $prodi = DB::table('prodi')->get();
+      $jurusan = DB::table('jurusan')->get();
+      return view('admin/admin.create', compact('prodi','jurusan'));
     }
 
     public function store(Request $request)

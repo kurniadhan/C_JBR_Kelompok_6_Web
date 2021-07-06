@@ -17,7 +17,7 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->level != 1) {
+        if (Auth::user()->id_level != 1) {
             return redirect()->route('error');
         }
 
