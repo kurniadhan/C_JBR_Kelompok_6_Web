@@ -1,14 +1,43 @@
-<body id="top"><div class="site-wrapper">
-  <div class="site-wrapper-inner">
-    <div class="cover-container">
-      <div class="masthead clearfix">
-        <div class="inner">
-          <h3 class="masthead-brand">SI KEMAH</h3>
-          <nav class="nav nav-masthead">
-            <a class="nav-link nav-social" href="#" title="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-            <a class="nav-link nav-social" href="#" title="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-            <a class="nav-link nav-social" href="#" title="Youtube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
-            <a class="nav-link nav-social" href="#" title="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-          </nav>
+<body>
+
+  <div class="collapse navbar-collapse custom-navmenu" id="main-navbar">
+    <div class="container py-2 py-md-5">
+      <div class="row align-items-start">
+        <div class="col-md-2">
+          <ul class="custom-menu">
+            <li class="active"><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="works.html">Works</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-6 d-none d-md-block  mr-auto">
+          <div class="tweet d-flex">
+            <span class="icofont-twitter text-white mt-2 mr-3"></span>
+            <div>
+              <p><em>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut
+                  officiis explicabo inventore. <br> <a href="#">t.co/v82jsk</a></em></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 d-none d-md-block">
+          <h3>Hire Me</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis
+            explicabo inventore. <br> <a href="#">myemail@gmail.com</a></p>
         </div>
       </div>
+
+    </div>
+  </div>
+
+  <nav class="navbar navbar-light custom-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">MyPortfolio.</a>
+
+      <a href="#" class="burger" data-toggle="collapse" data-target="#main-navbar">
+        <span></span>
+      </a>
+
+    </div>
+  </nav>
