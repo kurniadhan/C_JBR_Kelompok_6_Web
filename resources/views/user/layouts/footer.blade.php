@@ -1,8 +1,9 @@
 <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="row">
-        <div class="col-sm-6">
-          <p class="mb-1">&copy; Copyright SI-Kemas. All Rights Reserved</p>
+        <div class="col-md-8"></div>
+        <div class="col-md-4">
+          <p class="mb-1">&copy; Copyright Bootstrap. All Rights Reserved</p>
           <div class="credits">
             <!--
               All the links in the footer should remain intact.
@@ -10,7 +11,7 @@
               Licensing information: https://bootstrapmade.com/license/
               Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=MyPortfolio
             -->
-            Designed by <a href="https://bootstrapmade.com/">SI-Kemas</a>
+            Designed by <a href="https://bootstrapmade.com/">SI-Kemah</a>
           </div>
         </div>
         
