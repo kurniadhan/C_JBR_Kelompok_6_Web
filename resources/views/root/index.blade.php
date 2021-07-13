@@ -20,28 +20,30 @@
                 Email
               </th>
               <th>
-                Jenis Kelamin
-              </th>
-              <th>
                 Prodi
               </th>
-              <th colspan="2" style="text-align: center;">
-                Aksi
+              <th>
+                
               </th>
             </tr>
           </thead>
           <tbody>
-            @foreach ($data as $admin)
+            @foreach ($data['admin'] as $admin)
             <tr>
               <td>{{ $admin->id }}</td>
               <td>{{ $admin->nama }}</td>
               <td>{{ $admin->email }}</td>
-              <td>{{ $admin->jenis_kelamin === "L" ? "Laki - Laki" : "Perempuan" }}</td>
-              <td>{{ $admin->id_prodi }}</td>
-              <td style="text-align: center;">
-                <a href="{{ route('editAdmin', $admin->id) }}"><i class="mdi mdi-pencil"></i></a>
-              </td>
-              <td style="text-align: center;"><a href="{{ ('') }}"><i class="mdi mdi-delete"></i></a></td>
+              <td>{{ $admin->id_jurusan }}</td>
+              <td>
+                  <a href="{{ route('admin.edit', $admin->id) }}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                  <form action="{{ route('admin.destroy', $admin->id) }}" method="post" class="d-inline-block">
+                    @csrf
+                    @method('delete')
+                    <button class="btn btn-danger" onclick="return confirm('Anda ingin menghapus user ini?')">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                  </form>
+                </td>
             </tr>
             @endforeach
             <tr>

@@ -13,9 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//--------------------- Main Route ---------------------//
-
 Auth::routes();
+
+Route::prefix('root')->group(function () {
+   Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboardRoot')->middleware('Root');
+
+   // Master Admin Kegiatan
+   Route::get('/admin', [App\Http\Controllers\RootController::class, 'index'])->name('admin');
+   Route::get('/tambah_admin', [App\Http\Controllers\RootController::class, 'create'])->name('create.admin');
+   Route::POST('/admin', [App\Http\Controllers\RootController::class, 'store'])->name('store.admin');
+});
+
+//--------------------- Landing Page User ----------------------//
 
 Route::get('/', function () {
    return view('user.landing');
@@ -29,15 +38,15 @@ Route::get('/contact', function(){
    return view('user.contact');
 })->name('contact');
 
-Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard')->middleware('Admin');
+// --------------------------------------------------------------//
 
-//--------------------- Admin ----------------------//
+//------------------------ Master Admin -------------------------//
 
-Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
+Route::get('/edit_admin/{$id}', [App\Http\Controllers\AdminController::class, 'edit'])->name('editAdmin');
 
-Route::get('/tambah_admin', [App\Http\Controllers\AdminController::class, 'create'])->name('tambahAdmin');
+Route::POST('/admin', [App\Http\Controllers\AdminController::class, 'update'])->name('updateAdmin');
 
-//------------------- End Admin --------------------//
+//---------------------------------------------------------------//
 
 //------------------- Kegiatan ---------------------//
 

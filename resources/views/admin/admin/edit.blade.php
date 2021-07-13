@@ -3,17 +3,20 @@
 @section('content')
 	<div class="card">
 		<div class="card-body">
-			<h4 class="card-title">Tambah Admin</h4>
-			<form class="forms-sample" method="POST" action="{{ route('storeAdmin') }}">
+			<h4 class="card-title">Edit Admin</h4>
+			<form class="forms-sample" method="POST" action="{{ route('updateAdmin', $admin->id) }}" enctype="multipart/form-data">
 				@csrf
 
+                <!--div class="form-group">
+					<input type="hidden" class="form-control" name="id" value="{{ $admin->id }}">
+				</div-->
 				<div class="form-group">
 					<label for="nama">Nama</label>
-					<input type="text" class="form-control" name="nama" placeholder="Nama">
+					<input type="text" class="form-control" name="nama" placeholder="Nama" value="{{ $admin->nama }}">
 				</div>
 				<div class="form-group">
 					<label for="email">Email address</label>
-					<input type="email" class="form-control" name="email" placeholder="Email@Example">
+					<input type="email" class="form-control" name="email" placeholder="Email@Example" value="{{ $admin->email }}">
 				</div>
 				<div class="form-group">
 					<label for="jenis_kelamin">Jenis Kelamin</label>
@@ -38,7 +41,7 @@
 				</div>
 				<div class="form-group">
 					<label for="notelp">Nomor Telepon</label>
-					<input type="number" class="form-control" name="notelp" placeholder="Nomor Telepon">
+					<input type="number" class="form-control" name="notelp" placeholder="Nomor Telepon"  value="{{ $admin->notelp }}">
 				</div>
 				<div class="form-group">
 					<label for="prodi">Prodi</label>

@@ -54,7 +54,11 @@ class LoginController extends Controller
         ];
 
         if (auth()->attempt($login)) {
-            return redirect()->route('dashboard');
+            if (Auth::user()->id_level == 1) {
+                return redirect()->route('dashboardRoot');
+            } elseif (Auth::user()->id_level == 2) {
+                return redirect()->route('dashboardAdmin');
+            }
         }
 
         return redirect()->route('login')->with(['error' => 'Email/Password Salah!']);
