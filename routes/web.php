@@ -15,6 +15,23 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+//--------------------- Landing Page User ----------------------//
+
+Route::get('/', function () {
+   return view('user.landing');
+})->name('homepage');
+Route::get('/', [App\Http\Controllers\UserController::class, 'index'])->name('homepage');
+
+Route::get('/aboutme', function(){
+   return view('user.aboutme');
+})->name('aboutme');
+
+Route::get('/contact', [App\Http\Controllers\UserController::class, 'contact'])->name('contact');
+
+Route::get('/work-single', [App\Http\Controllers\UserController::class, 'show'])->name('work-single');
+
+//------------------------- User Root --------------------------//
+
 Route::prefix('root')->group(function () {
    Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboardRoot')->middleware('Root');
 
@@ -23,28 +40,6 @@ Route::prefix('root')->group(function () {
    Route::get('/tambah_admin', [App\Http\Controllers\RootController::class, 'create'])->name('create.admin');
    Route::POST('/admin', [App\Http\Controllers\RootController::class, 'store'])->name('store.admin');
 });
-
-//--------------------- Landing Page User ----------------------//
-
-Route::get('/', function () {
-   return view('user.landing');
-})->name('homepage');
-
-Route::get('/aboutme', function(){
-   return view('user.aboutme');
-})->name('aboutme');
-
-Route::get('/contact', function(){
-   return view('user.contact');
-})->name('contact');
-
-// --------------------------------------------------------------//
-
-//------------------------ Master Admin -------------------------//
-
-Route::get('/edit_admin/{$id}', [App\Http\Controllers\AdminController::class, 'edit'])->name('editAdmin');
-
-Route::POST('/admin', [App\Http\Controllers\AdminController::class, 'update'])->name('updateAdmin');
 
 //---------------------------------------------------------------//
 

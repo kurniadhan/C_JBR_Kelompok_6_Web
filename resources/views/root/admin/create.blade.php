@@ -4,7 +4,7 @@
 	<div class="card">
 		<div class="card-body">
 			<h4 class="card-title">Tambah Admin</h4>
-			<form class="forms-sample" method="POST" action="{{ route('storeAdmin') }}">
+			<form class="forms-sample" method="POST" action="{{ route('store.admin') }}">
 				@csrf
 
 				<div class="form-group">

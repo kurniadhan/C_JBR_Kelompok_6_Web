@@ -5,11 +5,12 @@
       <div class="row align-items-start">
         <div class="col-md-2">
           <ul class="custom-menu">
-            <li class="active"><a href="{{url('')}}">Home</a></li>
-            <li><a href="{{url('aboutme')}}">About Me</a></li>
-            <li><a href="{{url('contact')}}">Contact</a></li>
+            <li ><a href="{{url('')}}">Home</a></li>
+            <li><a href="{{url('aboutme')}}">Tentang Kami </a></li>
+            <li><a href="{{url('contact')}}">Kontak</a></li>
           </ul>
         </div>
+        
         <div class="col-md-6 d-none d-md-block  mr-auto">
         </div>
         
@@ -20,7 +21,7 @@
 
   <nav class="navbar navbar-light custom-navbar">
     <div class="container">
-      <a class="navbar-brand" href="index.html">SI-Kemas.</a>
+      <a class="navbar-brand" href="javascript:void(0)">SI-KEMAH</a>
 
       <a href="#" class="burger" data-toggle="collapse" data-target="#main-navbar">
         <span></span>
