@@ -21,7 +21,7 @@
 
   <nav class="navbar navbar-light custom-navbar">
     <div class="container">
-      <a class="navbar-brand" href="javascript:void(0)">SI-KEMAH</a>
+      <a class="navbar-brand" href="{{ '/' }}">SI-KEMAH</a>
 
       <a href="#" class="burger" data-toggle="collapse" data-target="#main-navbar">
         <span></span>

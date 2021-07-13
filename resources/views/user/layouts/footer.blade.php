@@ -2,7 +2,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 d-flex justify-content-center">
-          <p class="mb-1">&copy; Copyright Bootstrap. All Rights Reserved</p>
+          <p class="mb-1 mt-5">&copy; Copyright Bootstrap. All Rights Reserved</p>
           <div class="credits">
             <!--
               All the links in the footer should remain intact.

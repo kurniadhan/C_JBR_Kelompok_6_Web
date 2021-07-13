@@ -39,6 +39,7 @@ Route::prefix('root')->group(function () {
    Route::get('/admin', [App\Http\Controllers\RootController::class, 'index'])->name('admin');
    Route::get('/tambah_admin', [App\Http\Controllers\RootController::class, 'create'])->name('create.admin');
    Route::POST('/admin', [App\Http\Controllers\RootController::class, 'store'])->name('store.admin');
+   Route::get('/edit_admin', [App\Http\Controllers\RootController::class, 'edit'])->name('edit.admin');
 });
 
 //---------------------------------------------------------------//

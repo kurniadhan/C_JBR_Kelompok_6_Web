@@ -11,27 +11,22 @@
             </div>
             <div class="col-md-3 ml-auto" data-aos="fade-up" data-aos-delay="100">
               <div class="sticky-content">
-                <h3 class="h3">{{$kegiatan->judul_kegiatan}}</h3>
+                <h3 class="h3 font-weight-bold">{{$kegiatan->judul_kegiatan}}</h3>
                 <p class="mb-4"><span class="text-muted">{{$kegiatan->prodi}}</span></p>
 
-                <div class="mb-5">
-                  <p>{{$kegiatan->deskripsi}}</p>
-
+                <div class="m-1 font-weight-bold">Pemateri : </div>
+                  <p>{{$kegiatan->nama_pemateri}}
                 </div>
-
-
-                <h3 class="h3">{{$kegiatan->nama_pemateri}}</h3> 
-                  <li>Tanggal Registrasi :  </li> 
-                  {{$kegiatan->buka_registrasi}} sampai {{$kegiatan->tutup_registrasi}}
-                  <li>Tanggal Pelaksanaan : </li>
-                  {{$kegiatan->tgl_pelaksanaan}}
-                  <li>Jam :</li>
-                  Mulai {{$kegiatan->jam_mulai}} Selesai {{$kegiatan->jam_selesai}}
-                  <li>Contack Person :</li>
-                  {{$kegiatan->contact_person}}
-                </ul>
-
-                <p><a href="{{$kegiatan->link_meet}}" class="readmore">Visit Website</a></p>
+                <div class="m-1 font-weight-bold">Tanggal Registrasi : </div>
+                  <p>{{$kegiatan->buka_registrasi}} sampai {{$kegiatan->tutup_registrasi}}
+                <div class="m-1 font-weight-bold">Tanggal Pelaksanaan : </div>
+                  <p>{{$kegiatan->tgl_pelaksanaan}}
+                <div class="m-1 font-weight-bold">Jam : </div>
+                  <p>{{$kegiatan->jam_mulai}} WIB - {{$kegiatan->jam_selesai}} WIB
+                <div class="m-1 font-weight-bold">Contack Person : </div>
+                  <p>{{$kegiatan->contact_person}}
+              
+                <p><a href="{{$kegiatan->link_meet}}" class="readmore">Link Meet</a></p>
               </div>
             </div>
           </div>
