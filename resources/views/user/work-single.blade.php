@@ -1,9 +1,9 @@
 @include('user.layouts.header')
   @include('user.layouts.navbar')      
   <main id="main">
-    
+  @foreach ($data as $kegiatan)
     <div class="site-section pb-0">  
-      @foreach ($data as $kegiatan)
+      
         <div class="container">
           <div class="row align-items-stretch">
             <div class="col-md-8" data-aos="fade-up">
@@ -12,7 +12,7 @@
             <div class="col-md-3 ml-auto" data-aos="fade-up" data-aos-delay="100">
               <div class="sticky-content">
                 <h3 class="h3 font-weight-bold">{{$kegiatan->judul_kegiatan}}</h3>
-                <p class="mb-4"><span class="text-muted">{{$kegiatan->prodi}}</span></p>
+                <p class="mb-4"><span class="text-muted">{{$kegiatan->id_prodi}}</span></p>
 
                 <div class="m-1 font-weight-bold">Pemateri : </div>
                   <p>{{$kegiatan->nama_pemateri}}
@@ -31,8 +31,9 @@
             </div>
           </div>
         </div>
-      @endforeach
+      
     </div>
+    @endforeach
 
   </main>
 @include('user.layouts.footer')

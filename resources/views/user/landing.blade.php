@@ -25,7 +25,7 @@
             <a href="{{url('work-single')}}" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>{{($kegiatan->judul_kegiatan)}}</h3>
-                <span>{{($kegiatan->prodi)}}</span>
+                <span>{{($kegiatan->id_prodi)}}</span>
               </div>
               <img class="img-fluid" src="{{asset('Landingpage/img/'.$kegiatan->nama_foto.'')}}">
             </a>

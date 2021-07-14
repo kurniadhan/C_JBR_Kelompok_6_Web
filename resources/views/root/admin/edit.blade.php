@@ -1,12 +1,11 @@
-@extends('admin/layouts.template')
+@extends('root/layouts.template')
 
 @section('content')
 	<div class="card">
 		<div class="card-body">
 			<h4 class="card-title">Edit Admin</h4>
-			<form class="forms-sample" method="POST" action="{{ route('updateAdmin', $admin->id) }}" enctype="multipart/form-data">
+			<form class="forms-sample" method="POST" action="{{ route('admin.update', $admin->id) }}" enctype="multipart/form-data">
 				@csrf
-
                 <!--div class="form-group">
 					<input type="hidden" class="form-control" name="id" value="{{ $admin->id }}">
 				</div-->

@@ -1,4 +1,4 @@
-@extends('admin/layouts.template')
+@extends('root/layouts.template')
 
 @section('content')
         <div class="content-wrapper">

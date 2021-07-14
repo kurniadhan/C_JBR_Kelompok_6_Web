@@ -39,7 +39,7 @@
               <td>{{ $admin->jenis_kelamin === "L" ? "Laki - Laki" : "Perempuan" }}</td>
               <td>{{ $admin->id_prodi }}</td>
               <td style="text-align: center;">
-                <a href="{{ route('editAdmin', $admin->id) }}"><i class="mdi mdi-pencil"></i></a>
+                <a href="{{ route('admin.edit', $admin->id) }}"><i class="mdi mdi-pencil"></i></a>
               </td>
               <td style="text-align: center;"><a href="{{ ('') }}"><i class="mdi mdi-delete"></i></a></td>
             </tr>

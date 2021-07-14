@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Root;
+use App\Models\Admin;
 
 class RootController extends Controller
 {
@@ -73,7 +74,8 @@ class RootController extends Controller
      */
     public function edit($id)
     {
-        //
+        $admin = Admin::findorfail($id);
+        return view('root/admin.edit', compact('admin'));
     }
 
     /**
@@ -97,5 +99,27 @@ class RootController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function kegiatan()
+    {
+        $data = DB::table('kegiatan')->get();
+        return view('root/kegiatan.index', compact('data'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function riwayat()
+    {
+        $data = DB::table('kegiatan')->get();
+        return view('root/kegiatan.riwayat', compact('data'));
     }
 }

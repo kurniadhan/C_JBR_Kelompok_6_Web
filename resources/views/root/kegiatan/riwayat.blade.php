@@ -36,10 +36,7 @@
           <tbody>
             @foreach ($data as $kegiatan)
             <tr>
-              <td>{{ $kegiatan->id }}</td>
-              <td>
-                  <a href="{{ url('img/' . $kegiatan->nama_foto) }}" target="_blank">Lihat Foto</a>
-              </td>
+              <td>{{ $kegiatan->nama_foto }}</td>
               <td>{{ $kegiatan->judul_kegiatan }}</td>
               <td>{{ $kegiatan->kategori }}</td>
               <td>{{ $kegiatan->jenis }}</td>
