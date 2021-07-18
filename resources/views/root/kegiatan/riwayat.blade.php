@@ -14,9 +14,6 @@
                 #
               </th>
               <th>
-                Gambar
-              </th>
-              <th>
                 Judul Kegiatan
               </th>
               <th>
@@ -31,17 +28,23 @@
               <th>
                 Jurusan
               </th>
+              <th>
+                Gambar
+              </th>
             </tr>
           </thead>
           <tbody>
             @foreach ($data as $kegiatan)
             <tr>
-              <td>{{ $kegiatan->nama_foto }}</td>
+              <td>{{ $kegiatan->id }}</td>
               <td>{{ $kegiatan->judul_kegiatan }}</td>
               <td>{{ $kegiatan->kategori }}</td>
               <td>{{ $kegiatan->jenis }}</td>
               <td>{{ $kegiatan->id_prodi }}</td>
               <td>{{ $kegiatan->id_jurusan }}</td>
+              <td>
+                  <a href="{{ url('img/' . $kegiatan->nama_foto) }}" target="_blank">Lihat Foto</a>
+              </td>
             </tr>
             @endforeach
             <tr>

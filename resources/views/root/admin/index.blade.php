@@ -26,22 +26,24 @@
                 Prodi
               </th>
               <th colspan="2" style="text-align: center;">
-                Aksi
+                Action
               </th>
             </tr>
           </thead>
           <tbody>
             @foreach ($data as $admin)
             <tr>
-              <td>{{ $admin->id }}</td>
+              <td>{{ $no++ }}</td>
               <td>{{ $admin->nama }}</td>
               <td>{{ $admin->email }}</td>
               <td>{{ $admin->jenis_kelamin === "L" ? "Laki - Laki" : "Perempuan" }}</td>
               <td>{{ $admin->id_prodi }}</td>
               <td style="text-align: center;">
-                <a href="{{ route('admin.edit', $admin->id) }}"><i class="mdi mdi-pencil"></i></a>
+                <a href="{{ route('admin.edit', $admin->id) }}"><i class="btn btn-primary btn-sm mdi mdi-pencil"></i></a>
               </td>
-              <td style="text-align: center;"><a href="{{ ('') }}"><i class="mdi mdi-delete"></i></a></td>
+              <td style="text-align: center;">
+                <a href="{{ route('admin.destroy', $admin->id) }}"><i class="btn btn-primary btn-sm mdi mdi-delete"></i></a>
+              </td>
             </tr>
             @endforeach
             <tr>

@@ -8,66 +8,107 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Admin;
-use File;
 
 class AdminController extends Controller
 {
-    public function __construct()
-    {
-
-    }
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-      $data = DB::table('users')->get();
-      return view('root/admin.index', compact('data'));
+        $no = 1;
+        $data = DB::table('users')->get();
+        return view('root/admin.index', compact('no', 'data'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-      $prodi = DB::table('prodi')->get();
-      return view('root/admin.create', compact('prodi'));
+        $prodi = DB::table('prodi')->get();
+        return view('root/admin.create', compact('prodi'));
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-      DB::table('users')->insert([
-        'nama' => $request->nama,
-        'email' => $request->email,
-        'password' => Hash::make(123456),
-        'jenis_kelamin' => $request->jenis_kelamin,
-        'notelp' => $request->notelp,
-        'id_prodi' => $request->prodi,
-        'id_level' => 2
-      ]);
-      return redirect()->route('admin')
-        ->with('success','Admin berhasil ditambahkan.');
+        DB::table('users')->insert([
+          'nama' => $request->nama,
+          'email' => $request->email,
+          'password' => Hash::make(123456),
+          'jenis_kelamin' => $request->jenis_kelamin,
+          'notelp' => $request->notelp,
+          'id_prodi' => $request->prodi,
+          'level' => 'admin',
+        ]);
+
+        return redirect()->route('admin')->with('success', 'Admin Berhasil Ditambahkan!');
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function edit($id)
     {
-      $admin = Admin::findorfail($id);
-      return view('root/admin.edit', compact('admin'));
+        $admin = Admin::find($id);
+        $prodi = DB::table('prodi')->get();
+        return view('root/admin.edit', compact('admin', 'prodi'));
     }
 
-    public function update(Request $request)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
     {
-      DB::table('admin')->where('id',$request->id)->update([
-        'nama' => $request->nama,
-        'email' => $request->email,
-        'jenis_kelamin' => $request->jenis_kelamin,
-        'notelp' => $request->notelp,
-        'id_prodi' => $request->prodi,
-        'id_level' => 2
-      ]);
-      return redirect()->route('admin')
-        ->with('success','Data admin berhasil diperbarui.');
+        //dd($request);
+        DB::table('users')->where('id',$request->id)->update([
+          'nama' => $request->nama,
+          'email' => $request->email,
+          'notelp' => $request->notelp,
+          'id_prodi' => $request->prodi,
+        ]);
+
+        return redirect()->route('admin')->with('success', 'Admin Berhasil Ditambahkan!');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id)
     {
-      DB::table('pengalaman_kerja')->where('id',$id)->delete();
-      return redirect()->route('pengalaman_kerja.index')
-                      ->with('success','Data Pengalaman Kerja berhasil dihapus.');
+        $admin = Admin::find($id);
+        Admin::where('id', $id)->delete();
+        return redirect()->route('admin')->with('error', 'Admin Berhasil Dihapus!'); 
     }
 }

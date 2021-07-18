@@ -6,9 +6,9 @@
 			<h4 class="card-title">Edit Admin</h4>
 			<form class="forms-sample" method="POST" action="{{ route('admin.update', $admin->id) }}" enctype="multipart/form-data">
 				@csrf
-                <!--div class="form-group">
+                <div class="form-group">
 					<input type="hidden" class="form-control" name="id" value="{{ $admin->id }}">
-				</div-->
+				</div>
 				<div class="form-group">
 					<label for="nama">Nama</label>
 					<input type="text" class="form-control" name="nama" placeholder="Nama" value="{{ $admin->nama }}">
@@ -23,7 +23,7 @@
 						<div class="col-sm-4">
 							<div class="form-check">
 								<label class="form-check-label">
-									<input type="radio" class="form-check-input" name="jenis_kelamin" value="L">
+									<input type="radio" class="form-check-input" name="jenis_kelamin" {{ ( $admin->jenis_kelamin == "L" ) ? 'checked' : '' }} value="L" disabled>
 									Laki - Laki
 								</label>
 							</div>
@@ -31,7 +31,7 @@
 						<div class="col-sm-4">
 							<div class="form-check">
 								<label class="form-check-label">
-									<input type="radio" class="form-check-input" name="jenis_kelamin" value="P">
+									<input type="radio" class="form-check-input" name="jenis_kelamin" {{ ( $admin->jenis_kelamin == "P" ) ? 'checked' : '' }} value="P" disabled>
 									Perempuan
 								</label>
 							</div>
@@ -46,7 +46,7 @@
 					<label for="prodi">Prodi</label>
 					<select class="form-control" name="prodi">
 						@foreach ($prodi as $prodi)
-							<option value="{{ $prodi->id }}">{{ $prodi->prodi }}</option>
+							<option value="{{ $prodi->id }}" {{ ( $prodi->id == $admin->id_prodi ) ? 'selected' : '' }} >{{ $prodi->prodi }}</option>
 						@endforeach
 					</select>
 				</div>

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Admin extends Model
 {
     use HasFactory;
-    protected $table = 'admin';
+    protected $table = 'users';
     protected $PrimaryKey = 'id';
 
     /**
@@ -25,7 +25,7 @@ class Admin extends Model
         'created_at',
         'updated_at',
         'id_prodi',
-        'id_level',
+        'level',
     ];
 
     /**

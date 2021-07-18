@@ -71,7 +71,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'id_prodi' => 1,
-            'id_level' => 1,
+            'level' => 'root',
         ]);
     }
 }

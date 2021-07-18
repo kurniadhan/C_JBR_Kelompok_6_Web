@@ -35,16 +35,28 @@ Route::get('/work-single', [App\Http\Controllers\UserController::class, 'show'])
 Route::prefix('root')->group(function () {
    // Dashboard Root
    Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('root.dashboard')->middleware('Root');
+
    // Master Admin Kegiatan
-   Route::get('/admin', [App\Http\Controllers\RootController::class, 'index'])->name('admin');
-   Route::get('/tambah_admin', [App\Http\Controllers\RootController::class, 'create'])->name('admin.create');
-   Route::POST('/admin', [App\Http\Controllers\RootController::class, 'store'])->name('admin.store');
-   Route::get('/edit_admin/{id}', [App\Http\Controllers\RootController::class, 'edit'])->name('admin.edit');
+   Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
+   Route::get('/tambah_admin', [App\Http\Controllers\AdminController::class, 'create'])->name('admin.create');
+   Route::POST('/admin/store', [App\Http\Controllers\AdminController::class, 'store'])->name('admin.store');
+   Route::get('/edit_admin/{id}', [App\Http\Controllers\AdminController::class, 'edit'])->name('admin.edit');
+   Route::POST('/edit_admin/{id}', [App\Http\Controllers\AdminController::class, 'update'])->name('admin.update');
+   Route::get('/hapus_admin/{id}', [App\Http\Controllers\AdminController::class, 'destroy'])->name('admin.destroy');
+
    // List Kegiatan
    Route::get('/kegiatan', [App\Http\Controllers\RootController::class, 'kegiatan'])->name('root.kegiatan');
+
    // Riwayat Kegiatan
    Route::get('/riwayat', [App\Http\Controllers\RootController::class, 'riwayat'])->name('root.riwayat');
 });
+
+Route::prefix('admin')->group(function () {
+   // Dashboard Root
+   Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin.dashboard')->middleware('Admin');
+});
+
+Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
 //---------------------------------------------------------------//
 
