@@ -31,7 +31,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function adminHome()
+    public function admin()
     {
         return view ('admin.dashboard');
     }

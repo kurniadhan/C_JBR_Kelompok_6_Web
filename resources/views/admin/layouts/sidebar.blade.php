@@ -5,7 +5,7 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="{{ ('') }}">
+            <a class="nav-link" href="{{ route('admin.dashboard') }}">
               <i class="mdi mdi-home menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
@@ -18,8 +18,8 @@
             </a>
             <div class="collapse" id="kegiatan">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ ('') }}"> Tambah Kegiatan </a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ ('') }}"> List Kegiatan </a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('kegiatan.create') }}"> Tambah Kegiatan </a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('admin.kegiatan') }}"> List Kegiatan </a></li>
               </ul>
             </div>
           </li>

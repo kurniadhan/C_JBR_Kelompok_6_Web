@@ -11,7 +11,7 @@
  Target Server Version : 100419
  File Encoding         : 65001
 
- Date: 06/07/2021 14:06:37
+ Date: 20/07/2021 20:34:09
 */
 
 SET NAMES utf8mb4;
@@ -55,41 +55,32 @@ INSERT INTO `jurusan` VALUES (2, 'Kesehatan');
 DROP TABLE IF EXISTS `kegiatan`;
 CREATE TABLE `kegiatan`  (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `judul_kegiatan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jenis` enum('Internal','Eksternal') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `judul` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `kategori` enum('Event','Lomba','Seminar') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `prodi` int(11) NOT NULL,
+  `jenis` enum('Internal','Eksternal') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_prodi` int(1) NOT NULL,
+  `id_jurusan` int(1) NULL DEFAULT NULL,
   `nama_pemateri` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `buka_registrasi` date NOT NULL,
-  `tutup_registrasi` date NOT NULL,
+  `tgl_buka` date NOT NULL,
+  `tgl_tutup` date NOT NULL,
   `tgl_pelaksanaan` date NOT NULL,
   `jam_mulai` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `jam_selesai` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `deskripsi` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `contact_person` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `nama_foto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `link_meet` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `deskripsi` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Table structure for level
--- ----------------------------
-DROP TABLE IF EXISTS `level`;
-CREATE TABLE `level`  (
-  `id` int(1) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `level` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of level
+-- Records of kegiatan
 -- ----------------------------
-INSERT INTO `level` VALUES (1, 'Root');
-INSERT INTO `level` VALUES (2, 'Admin');
+INSERT INTO `kegiatan` VALUES (1, 'Mengenal UI/UX', 'Seminar', 'Internal', 0, 1, 'Muhammad Nuzul Ridoi', '2021-07-08', '2021-07-12', '2021-07-13', '09:00', '10:30', '089697670964', 'mengenalUI.jpg', 's.id/SharingBiroMM', 'Sharing tentang UI/UX', '1', NULL, NULL);
+INSERT INTO `kegiatan` VALUES (2, 'asdas', 'Seminar', 'Internal', 3, 2, 'asdas', '2021-07-20', '2021-07-24', '2021-07-25', '20:28', '02:28', '123123', '60f6cfd446dae_pamflet_kegiatan.jpeg', 'http://genshin.gg/', 'asdas', '0', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for migrations
@@ -170,22 +161,24 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users`  (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jenis_kelamin` enum('L','P') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `notelp` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jenis_kelamin` enum('L','P') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `notelp` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `level` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_prodi` int(1) NOT NULL,
-  `id_level` int(1) NOT NULL,
+  `id_jurusan` int(1) NULL DEFAULT NULL,
+  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
-  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'Kuur', 'L', '085156186156', 'dickynakiri@gmail.com', '$2y$10$IyIhgKHLoT6keuuYsW.3yeXSmErmLWc8K987.SDy6VKWa5Yl2mlgm', 1, 1, '2021-07-03 18:28:04', '2021-07-03 18:28:04', NULL);
+INSERT INTO `users` VALUES (1, 'Kuur', 'dickynakiri@gmail.com', '$2y$10$IyIhgKHLoT6keuuYsW.3yeXSmErmLWc8K987.SDy6VKWa5Yl2mlgm', 'L', '085156186156', 'root', 1, 1, NULL, '2021-07-03 18:28:04', '2021-07-03 18:28:04');
+INSERT INTO `users` VALUES (8, 'Jett', 'jett@admin', '$2y$10$xNUSM43fLijMvfGQEFeSWuIykn94eu3CYX2RlmcPYK2gZcc6zH62G', 'P', '082311626296', 'admin', 3, NULL, NULL, NULL, NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;
