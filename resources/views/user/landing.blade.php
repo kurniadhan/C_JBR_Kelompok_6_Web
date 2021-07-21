@@ -24,10 +24,10 @@
           <div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">
             <a href="{{url('work-single')}}" class="item-wrap fancybox">
               <div class="work-info">
-                <h3>{{($kegiatan->judul_kegiatan)}}</h3>
+                <h3>{{($kegiatan->judul)}}</h3>
                 <span>{{($kegiatan->id_prodi)}}</span>
               </div>
-              <img class="img-fluid" src="{{asset('Landingpage/img/'.$kegiatan->nama_foto.'')}}">
+              <img class="img-fluid" src="{{asset('/img/'.$kegiatan->nama_foto.'')}}">
             </a>
           </div>
         @endforeach

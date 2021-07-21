@@ -31,10 +31,9 @@ class KegiatanController extends Controller
      */
     public function create()
     {
-        $kegiatan = DB::table('kegiatan')->get();
         $prodi = DB::table('prodi')->get();
         $jurusan = DB::table('jurusan')->get();
-        return view('admin/kegiatan.create', compact('kegiatan', 'prodi', 'jurusan'));
+        return view('admin/kegiatan.create', compact('prodi', 'jurusan'));
     }
 
     /**
@@ -90,7 +89,10 @@ class KegiatanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kegiatan = Kegiatan::find($id);
+        $prodi = DB::table('prodi')->get();
+        $jurusan = DB::table('jurusan')->get();
+        return view('admin/kegiatan.edit', compact('kegiatan', 'prodi', 'jurusan'));
     }
 
     /**
@@ -102,7 +104,35 @@ class KegiatanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $file = $request->file('img');
+        $oldImg = $request->oldImg;
+        if (!empty($file)){
+            unlink("img/".$oldImg);
+            $filename = uniqid() . '_' . 'pamflet_kegiatan' . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('img'), $filename);
+        }
+
+
+        DB::table('kegiatan')->where('id',$request->id)->update([
+            'judul' => $request->judul,
+            'nama_pemateri' => $request->nama_pemateri,
+            'kategori' => $request->kategori,
+            'jenis' => $request->jenis,
+            'id_prodi' => $request->prodi,
+            'id_jurusan' => $request->jurusan,
+            'tgl_buka' => $request->tgl_buka,
+            'tgl_tutup' => $request->tgl_tutup,
+            'tgl_pelaksanaan' => $request->tgl_pelaksanaan,
+            'jam_mulai' => $request->jam_mulai,
+            'jam_selesai' => $request->jam_selesai,
+            'contact_person' => $request->contact_person,
+            'nama_foto' => $filename,
+            'link_meet' => $request->link_meet,
+            'deskripsi' => $request->deskripsi,
+            'status' => 1,
+        ]);
+
+        return redirect()->route('admin.kegiatan')->with('success', 'Kegiatan Berhasil di Update!');
     }
 
     /**
@@ -113,6 +143,8 @@ class KegiatanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $kegiatan = Kegiatan::find($id);
+        Kegiatan::where('id', $id)->delete();
+        return redirect()->route('admin.kegiatan')->with('error', 'Kegiatan Berhasil Dihapus!'); 
     }
 }

@@ -19,7 +19,7 @@
             <div class="collapse" id="admin">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="{{ route('admin.create') }}">Tambah Admin</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('admin') }}">List Admin</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('root.admin') }}">List Admin</a></li>
               </ul>
             </div>
           </li>

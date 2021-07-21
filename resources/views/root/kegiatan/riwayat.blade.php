@@ -37,7 +37,7 @@
             @foreach ($data as $kegiatan)
             <tr>
               <td>{{ $kegiatan->id }}</td>
-              <td>{{ $kegiatan->judul_kegiatan }}</td>
+              <td>{{ $kegiatan->judul }}</td>
               <td>{{ $kegiatan->kategori }}</td>
               <td>{{ $kegiatan->jenis }}</td>
               <td>{{ $kegiatan->id_prodi }}</td>

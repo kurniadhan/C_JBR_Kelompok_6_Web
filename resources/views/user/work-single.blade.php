@@ -11,7 +11,7 @@
             </div>
             <div class="col-md-3 ml-auto" data-aos="fade-up" data-aos-delay="100">
               <div class="sticky-content">
-                <h3 class="h3 font-weight-bold">{{$kegiatan->judul_kegiatan}}</h3>
+                <h3 class="h3 font-weight-bold">{{$kegiatan->judul}}</h3>
                 <p class="mb-4"><span class="text-muted">{{$kegiatan->id_prodi}}</span></p>
 
                 <div class="m-1 font-weight-bold">Pemateri : </div>

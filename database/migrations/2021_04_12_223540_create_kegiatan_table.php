@@ -15,7 +15,7 @@ class CreateKegiatanTable extends Migration
     {
         Schema::create('kegiatan', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('judul_kegiatan');
+            $table->string('judul');
             $table->string('jenis');
             $table->string('kategori');
             $table->integer('prodi');

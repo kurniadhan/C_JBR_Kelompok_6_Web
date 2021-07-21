@@ -5,9 +5,15 @@
     <div class="card-body">
       <h4 class="card-title">List Kegiatan</h4>
       @if ($message = Session::get('success'))
-        <div class="alert alert-success alert-block">
+        <div class="alert alert-success">
             <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong>{{ $message }}</strong>
+                {{ $message }}
+        </div>
+      @endif
+      @if ($message = Session::get('error'))
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+                {{ $message }}
         </div>
       @endif
       <div class="table-responsive pt-3">
@@ -35,6 +41,9 @@
               <th>
                 Gambar
               </th>
+              <th colspan="2" style="text-align: center;">
+                Action
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -48,6 +57,12 @@
               <td>{{ $kegiatan->id_jurusan }}</td>
               <td>
                   <a href="{{ url('img/' . $kegiatan->nama_foto) }}" target="_blank">Lihat Foto</a>
+              </td>
+              <td style="text-align: center;">
+                <a href="{{ route('kegiatan.edit', $kegiatan->id) }}"><i class="btn btn-primary btn-sm mdi mdi-pencil"></i></a>
+              </td>
+              <td style="text-align: center;">
+                <a href="{{ route('kegiatan.destroy', $kegiatan->id) }}"><i class="btn btn-primary btn-sm mdi mdi-delete"></i></a>
               </td>
             </tr>
             @endforeach
