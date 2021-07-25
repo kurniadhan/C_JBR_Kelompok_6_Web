@@ -1,4 +1,11 @@
-@include('user.layouts.header')
-  @include('user.layouts.navbar')      
-      @yield('content')
-@include('user.layouts.footer')
+<!-- Header -->
+@include('user/layouts.header')
+
+<!-- Navbar -->
+@include('user/layouts.navbar') 
+
+<!-- Content -->
+@yield('content')
+
+<!-- Footer -->
+@include('user/layouts.footer')

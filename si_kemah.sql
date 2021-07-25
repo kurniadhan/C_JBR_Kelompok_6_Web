@@ -11,7 +11,7 @@
  Target Server Version : 100419
  File Encoding         : 65001
 
- Date: 23/07/2021 10:28:59
+ Date: 26/07/2021 02:06:44
 */
 
 SET NAMES utf8mb4;
@@ -41,12 +41,13 @@ CREATE TABLE `jurusan`  (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `jurusan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of jurusan
 -- ----------------------------
 INSERT INTO `jurusan` VALUES (1, 'Teknologi Informasi');
+INSERT INTO `jurusan` VALUES (2, 'Kesehatan');
 
 -- ----------------------------
 -- Table structure for kegiatan
@@ -69,17 +70,17 @@ CREATE TABLE `kegiatan`  (
   `nama_foto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `link_meet` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `deskripsi` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `status` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `status` int(1) NOT NULL DEFAULT 0,
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of kegiatan
 -- ----------------------------
-INSERT INTO `kegiatan` VALUES (1, 'Mengenal UI/UX', 'Seminar', 'Internal', 1, 1, 'Muhammad Nuzul Ridoi', '2021-07-08', '2021-07-12', '2021-07-13', '09:00', '10:30', '089697670964', '60f85c15679f7_pamflet_kegiatan.jpeg', 's.id/SharingBiroMM', 'Sharing tentang UI/UX', '0', NULL, NULL);
-INSERT INTO `kegiatan` VALUES (6, 'Contoh Kegiatan', 'Seminar', 'Internal', 1, 1, 'Drs. Hamba Allah', '2021-07-23', '2021-07-23', '2021-07-23', '09:46', '12:44', '08231626296', '60fa2d323f085_pamflet_kegiatan.jpeg', 'http://google.com/', 'Contoh Kegiatan', '0', NULL, NULL);
+INSERT INTO `kegiatan` VALUES (1, 'Mengenal UI/UX', 'Seminar', 'Eksternal', 0, 1, 'Muhammad Nuzul Ridoi', '2021-07-08', '2021-07-12', '2021-07-13', '09:00', '10:30', '089697670964', '60f85c15679f7_pamflet_kegiatan.jpeg', 'https://s.id/SharingBiroMM', 'Sharing tentang UI/UX', 1, NULL, NULL);
+INSERT INTO `kegiatan` VALUES (7, 'TIF Exibition', 'Event', 'Eksternal', 0, 2, 'Kuur', NULL, NULL, '2021-07-26', '08:00', '17:00', '085156186156', '60fd89f18b878_pamflet_kegiatan.jpeg', 'https://wsjti.id', 'asdas', 1, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for migrations
@@ -134,6 +135,11 @@ CREATE TABLE `password_resets`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of password_resets
+-- ----------------------------
+INSERT INTO `password_resets` VALUES ('satsaratri@gmail.com', '$2y$10$.5F0gu25SRLK35Q2iixbPeWQWl9E24kWEUCz1gjaQjhbf5K/DCtKG', '2021-07-25 16:44:18');
+
+-- ----------------------------
 -- Table structure for prodi
 -- ----------------------------
 DROP TABLE IF EXISTS `prodi`;
@@ -142,14 +148,17 @@ CREATE TABLE `prodi`  (
   `prodi` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_jurusan` int(1) UNSIGNED NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of prodi
 -- ----------------------------
+INSERT INTO `prodi` VALUES (0, 'Umum', NULL);
 INSERT INTO `prodi` VALUES (1, 'Teknik Informatika', 1);
 INSERT INTO `prodi` VALUES (2, 'Teknik Komputer', 1);
 INSERT INTO `prodi` VALUES (3, 'Manajemen Informatika', 1);
+INSERT INTO `prodi` VALUES (4, 'Rekam Medik', 2);
+INSERT INTO `prodi` VALUES (6, 'Gizi Klinik', 2);
 
 -- ----------------------------
 -- Table structure for users
@@ -170,13 +179,16 @@ CREATE TABLE `users`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (12, 'Admin', 'admin', '$2y$10$RW9tkxrAVHc3u0VszHR6U.lUuiYczrzmIkUCxzs0EO0TvEcn9AoWy', 'L', '082311626296', 'admin', 1, NULL, NULL, '2021-07-22 16:27:52', '2021-07-22 16:27:52');
-INSERT INTO `users` VALUES (13, 'Dicky Kurnia Ramadhan', 'root', '$2y$10$YQpOUgpUXJJD7K3GowIstu9u3VdbtM7gVg2S7fZYyOCu1956/s3XK', 'L', '085156186156', 'root', 1, 1, NULL, '2021-07-22 23:52:47', '2021-07-22 23:52:47');
-INSERT INTO `users` VALUES (17, 'Satsa Ratri Hastutik', 'satsaratri@gmail.com', '$2y$10$A1t3svMDWtu3wB4BUpwROOUTbUOU3U17WDZKaj0xBBdhR6YsXwLPS', 'P', '08912375823', 'admin', 1, NULL, NULL, NULL, NULL);
+INSERT INTO `users` VALUES (12, 'Admin', 'admin', '$2y$10$qNFdvJFr8ZHz82rnJhDDQeiD/X0QrL9MjJ9TCEc1IRWzodYIMmHni', 'L', '082311626296', 'admin', 1, 1, NULL, '2021-07-22 16:27:52', '2021-07-22 16:27:52');
+INSERT INTO `users` VALUES (13, 'Root', 'root', '$2y$10$a3Kbailpw2yq.WTPHz1RleZUGQuQJX79wbiIpbtELcfKuqTaxXKYS', 'L', '085156186156', 'root', 1, 1, NULL, '2021-07-22 23:52:47', '2021-07-22 23:52:47');
+INSERT INTO `users` VALUES (17, 'Satsa Ratri Hastutik', 'satsaratri@gmail.com', '$2y$10$A1t3svMDWtu3wB4BUpwROOUTbUOU3U17WDZKaj0xBBdhR6YsXwLPS', 'P', '08912375823', 'admin', 2, 1, NULL, NULL, NULL);
+INSERT INTO `users` VALUES (18, 'Dana Satria Mukti', 'danasatria19@gmail.com', '$2y$10$U4UcTouYtwRuPzyVpGJg/uHeG1W3sd/ioQXjLhRfCjIHwOrdReyQe', 'L', '087818274752', 'admin', 3, 1, NULL, NULL, NULL);
+INSERT INTO `users` VALUES (19, 'Dika Samudera', 'dikasamudera@gmail.com', '$2y$10$2Y1VQ9vyDaVu8yfZpixYeegtzmL332ESdIB5WlBbBtDW5Z3woiZp2', 'L', '082382737123', 'admin', 6, 2, NULL, NULL, NULL);
+INSERT INTO `users` VALUES (21, 'Dicky Kurnia Ramadhan', 'dickynakiri@gmail.com', '$2y$10$exO5RnH95izf7zSo7KjobeGyCyUTw2DmmtkycGyDXFBHI9Uo2aBeu', 'L', '085156186156', 'admin', 1, 1, NULL, '2021-07-25 18:31:31', '2021-07-25 18:31:31');
 
 SET FOREIGN_KEY_CHECKS = 1;

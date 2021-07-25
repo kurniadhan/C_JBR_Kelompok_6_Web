@@ -15,12 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
-
-//--------------------- Landing Page User ----------------------//
-
-Route::get('/', [App\Http\Controllers\UserController::class, 'index'])->name('user.dashboard');
-
 Route::get('/clear', function() {
    $query = Artisan::call('config:cache');
    return "Hapus Cache Berhasil!";
@@ -31,13 +25,17 @@ Route::get('/clear', function() {
    return $hash;
  });
 
-Route::get('/aboutme', function(){
-   return view('user.aboutme');
-})->name('aboutme');
+Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
-Route::get('/contact', [App\Http\Controllers\UserController::class, 'contact'])->name('contact');
+//--------------------- Landing Page User ----------------------//
 
-Route::get('/work-single/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('user.detail');
+Route::get('/', [App\Http\Controllers\UserController::class, 'index'])->name('user.dashboard');
+
+Route::get('/about', [App\Http\Controllers\UserController::class, 'about'])->name('user.about');
+
+Route::get('/contact', [App\Http\Controllers\UserController::class, 'contact'])->name('user.contact');
+
+Route::get('/detail_kegiatan/{id}', [App\Http\Controllers\UserController::class, 'detail_kegiatan'])->name('user.detail');
 
 //--------------------------------------------------------------//
 
