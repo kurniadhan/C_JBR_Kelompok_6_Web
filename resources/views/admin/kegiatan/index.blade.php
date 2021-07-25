@@ -27,13 +27,13 @@
                 Judul Kegiatan
               </th>
               <th>
+                Nama Pemateri
+              </th>
+              <th>
                 Kategori
               </th>
               <th>
                 Jenis
-              </th>
-              <th>
-                Prodi
               </th>
               <th>
                 Jurusan
@@ -44,25 +44,31 @@
               <th colspan="2" style="text-align: center;">
                 Action
               </th>
+              <th style="text-align: center">
+                Status
+              </th>
             </tr>
           </thead>
           <tbody>
             @foreach ($data as $kegiatan)
             <tr>
-              <td>{{ $kegiatan->id }}</td>
+              <td>{{ $no++ }}</td>
               <td>{{ $kegiatan->judul }}</td>
+              <td>{{ $kegiatan->nama_pemateri }}</td>
               <td>{{ $kegiatan->kategori }}</td>
               <td>{{ $kegiatan->jenis }}</td>
-              <td>{{ $kegiatan->id_prodi }}</td>
-              <td>{{ $kegiatan->id_jurusan }}</td>
+              <td>{{ $kegiatan->jurusan }}</td>
               <td>
-                  <a href="{{ url('img/' . $kegiatan->nama_foto) }}" target="_blank">Lihat Foto</a>
+                  <a href="{{ url('img/' . $kegiatan->nama_foto) }}" target="_blank">Lihat Gambar</a>
               </td>
               <td style="text-align: center;">
-                <a href="{{ route('kegiatan.edit', $kegiatan->id) }}"><i class="btn btn-primary btn-sm mdi mdi-pencil"></i></a>
+                <a href="{{ route('kegiatan.edit', $kegiatan->id) }}"><i class="btn btn-outline-primary btn-sm mdi mdi-pencil"></i></a>
               </td>
               <td style="text-align: center;">
-                <a href="{{ route('kegiatan.destroy', $kegiatan->id) }}"><i class="btn btn-primary btn-sm mdi mdi-delete"></i></a>
+                <a href="{{ route('kegiatan.destroy', $kegiatan->id) }}"><i class="btn btn-outline-danger btn-sm mdi mdi-delete"></i></a>
+              </td>
+              <td style="text-align: center">
+                <a href="{{ route('kegiatan.status', $kegiatan->id) }}"><i class="badge badge-success">Aktif</i></a>
               </td>
             </tr>
             @endforeach

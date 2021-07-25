@@ -10,6 +10,9 @@
                 <div>
                     <input type="hidden" class="form-control" name="id" value="{{ $kegiatan->id }}">  
                 </div>
+                <div>
+                    <input type="hidden" class="form-control" name="oldImg" value="{{ $kegiatan->nama_foto }}">  
+                </div>
 				<div class="form-group">
 					<label for="judul">Judul Kegiatan</label>
 					<input type="text" class="form-control" name="judul" value="{{ $kegiatan->judul }}">
@@ -47,22 +50,6 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<label for="prodi">Prodi</label>
-					<select class="form-control" name="prodi">
-						@foreach ($prodi as $prodi)
-							<option value="{{ $prodi->id }}" {{ ( $prodi->id == $kegiatan->id_prodi ) ? 'selected' : '' }} >{{ $prodi->prodi }}</option>
-						@endforeach
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="jurusan">Jurusan</label>
-					<select class="form-control" name="jurusan">
-						@foreach ($jurusan as $jurusan)
-							<option value="{{ $jurusan->id }}" {{ ( $jurusan->id == $kegiatan->id_prodi ) ? 'selected' : '' }} >{{ $jurusan->jurusan }}</option>
-						@endforeach
-					</select>
 				</div>
 				<div class="row">
 					<div class="col-md-4">

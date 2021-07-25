@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
-use App\Models\User;
-use File;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Kegiatan;
 
 class UserController extends Controller
 {
@@ -17,13 +18,13 @@ class UserController extends Controller
     }
     public function contact()
     {
-      $data = DB::table('admin')->get();
+      $data = DB::table('users')->get();
       return view('user/contact', compact('data'));
     }
-    public function show()
+    public function show($id)
     {
-      $data = DB::table('kegiatan')->get();
-      return view('user/work-single', compact('data'));
+      $kegiatan = Kegiatan::find($id);
+      return view('user/work-single', compact('kegiatan', 'id'));
     }
 
 }

@@ -2,6 +2,13 @@
 
 @section('content')
         <div class="content-wrapper">
+          @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                    <small>{{ $message }}</small>
+            </div>
+          @endif
+          <br>
           <div class="row">
             <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">

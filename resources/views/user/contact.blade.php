@@ -17,26 +17,26 @@
       </div> 
     </div>    
          
-        @foreach ($data as $admin)
+        @foreach ($data as $users)
         
         <div class="col-md-5 col-lg-20 mb-10 mb-lg-1">
             <div class="box" style="border :1px solid grey; padding-left : 10px;padding-right :10px; margin-right : 15px; ">
             <ul class="list-unstyled">
               <li class="mb-3">
                 <strong class="d-block mb-1">Nama</strong>
-               <span>{{$admin->nama}}</span>
+               <span>{{$users->nama}}</span>
               </li>
               <li class="mb-3">
                 <strong class="d-block mb-1">Phone</strong>
-                <span>{{$admin->notelp}}</span>
+                <span>{{$users->notelp}}</span>
               </li>
               <li class="mb-3">
                 <strong class="d-block mb-1">Email</strong>
-                <span>{{$admin->email}}</span>
+                <span>{{$users->email}}</span>
               </li>
               <li class="mb-3">
                 <strong class="d-block mb-1">Prodi</strong>
-                <span>{{$admin->id_prodi}}</span>
+                <span>{{$users->id_prodi}}</span>
               </li>
               
             </ul>

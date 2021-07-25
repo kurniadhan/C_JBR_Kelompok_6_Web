@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="{{ asset('backend/css/style.css') }}">
   <!-- endinject -->
   <link rel="shortcut icon" href="{{ asset('backend/images/favicon.png') }}" />
+
 </head>
 
 <body>

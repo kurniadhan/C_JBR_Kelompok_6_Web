@@ -22,11 +22,11 @@
               <span class="nav-profile-name">{{ Auth::user()->nama }}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item" href="{{ ('') }}">
+              <a class="dropdown-item" href="{{ route('root.profile', Auth()->user()->id)  }}">
                   <i class="mdi mdi-account text-primary"></i>
                   My Profile
               </a>
-              <a class="dropdown-item" href="{{ ('') }}">
+              <a class="dropdown-item" href="{{ route('root.password', Auth()->user()->id) }}">
                   <i class="mdi mdi-settings text-primary"></i>
                   Ubah Password
               </a>

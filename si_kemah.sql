@@ -11,7 +11,7 @@
  Target Server Version : 100419
  File Encoding         : 65001
 
- Date: 20/07/2021 20:34:09
+ Date: 23/07/2021 10:28:59
 */
 
 SET NAMES utf8mb4;
@@ -47,7 +47,6 @@ CREATE TABLE `jurusan`  (
 -- Records of jurusan
 -- ----------------------------
 INSERT INTO `jurusan` VALUES (1, 'Teknologi Informasi');
-INSERT INTO `jurusan` VALUES (2, 'Kesehatan');
 
 -- ----------------------------
 -- Table structure for kegiatan
@@ -58,29 +57,29 @@ CREATE TABLE `kegiatan`  (
   `judul` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `kategori` enum('Event','Lomba','Seminar') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `jenis` enum('Internal','Eksternal') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_prodi` int(1) NOT NULL,
+  `id_prodi` int(1) NULL DEFAULT NULL,
   `id_jurusan` int(1) NULL DEFAULT NULL,
   `nama_pemateri` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tgl_buka` date NOT NULL,
-  `tgl_tutup` date NOT NULL,
+  `tgl_buka` date NULL DEFAULT NULL,
+  `tgl_tutup` date NULL DEFAULT NULL,
   `tgl_pelaksanaan` date NOT NULL,
   `jam_mulai` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `jam_selesai` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `contact_person` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `nama_foto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `link_meet` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `deskripsi` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `deskripsi` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
   `status` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of kegiatan
 -- ----------------------------
-INSERT INTO `kegiatan` VALUES (1, 'Mengenal UI/UX', 'Seminar', 'Internal', 0, 1, 'Muhammad Nuzul Ridoi', '2021-07-08', '2021-07-12', '2021-07-13', '09:00', '10:30', '089697670964', 'mengenalUI.jpg', 's.id/SharingBiroMM', 'Sharing tentang UI/UX', '1', NULL, NULL);
-INSERT INTO `kegiatan` VALUES (2, 'asdas', 'Seminar', 'Internal', 3, 2, 'asdas', '2021-07-20', '2021-07-24', '2021-07-25', '20:28', '02:28', '123123', '60f6cfd446dae_pamflet_kegiatan.jpeg', 'http://genshin.gg/', 'asdas', '0', NULL, NULL);
+INSERT INTO `kegiatan` VALUES (1, 'Mengenal UI/UX', 'Seminar', 'Internal', 1, 1, 'Muhammad Nuzul Ridoi', '2021-07-08', '2021-07-12', '2021-07-13', '09:00', '10:30', '089697670964', '60f85c15679f7_pamflet_kegiatan.jpeg', 's.id/SharingBiroMM', 'Sharing tentang UI/UX', '0', NULL, NULL);
+INSERT INTO `kegiatan` VALUES (6, 'Contoh Kegiatan', 'Seminar', 'Internal', 1, 1, 'Drs. Hamba Allah', '2021-07-23', '2021-07-23', '2021-07-23', '09:46', '12:44', '08231626296', '60fa2d323f085_pamflet_kegiatan.jpeg', 'http://google.com/', 'Contoh Kegiatan', '0', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for migrations
@@ -151,8 +150,6 @@ CREATE TABLE `prodi`  (
 INSERT INTO `prodi` VALUES (1, 'Teknik Informatika', 1);
 INSERT INTO `prodi` VALUES (2, 'Teknik Komputer', 1);
 INSERT INTO `prodi` VALUES (3, 'Manajemen Informatika', 1);
-INSERT INTO `prodi` VALUES (4, 'Rekam Medik', 2);
-INSERT INTO `prodi` VALUES (5, 'Gizi Klinik', 2);
 
 -- ----------------------------
 -- Table structure for users
@@ -163,22 +160,23 @@ CREATE TABLE `users`  (
   `nama` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jenis_kelamin` enum('L','P') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `jenis_kelamin` enum('L','P') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `notelp` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `level` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_prodi` int(1) NOT NULL,
+  `level` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `id_prodi` int(1) NULL DEFAULT NULL,
   `id_jurusan` int(1) NULL DEFAULT NULL,
   `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'Kuur', 'dickynakiri@gmail.com', '$2y$10$IyIhgKHLoT6keuuYsW.3yeXSmErmLWc8K987.SDy6VKWa5Yl2mlgm', 'L', '085156186156', 'root', 1, 1, NULL, '2021-07-03 18:28:04', '2021-07-03 18:28:04');
-INSERT INTO `users` VALUES (8, 'Jett', 'jett@admin', '$2y$10$xNUSM43fLijMvfGQEFeSWuIykn94eu3CYX2RlmcPYK2gZcc6zH62G', 'P', '082311626296', 'admin', 3, NULL, NULL, NULL, NULL);
+INSERT INTO `users` VALUES (12, 'Admin', 'admin', '$2y$10$RW9tkxrAVHc3u0VszHR6U.lUuiYczrzmIkUCxzs0EO0TvEcn9AoWy', 'L', '082311626296', 'admin', 1, NULL, NULL, '2021-07-22 16:27:52', '2021-07-22 16:27:52');
+INSERT INTO `users` VALUES (13, 'Dicky Kurnia Ramadhan', 'root', '$2y$10$YQpOUgpUXJJD7K3GowIstu9u3VdbtM7gVg2S7fZYyOCu1956/s3XK', 'L', '085156186156', 'root', 1, 1, NULL, '2021-07-22 23:52:47', '2021-07-22 23:52:47');
+INSERT INTO `users` VALUES (17, 'Satsa Ratri Hastutik', 'satsaratri@gmail.com', '$2y$10$A1t3svMDWtu3wB4BUpwROOUTbUOU3U17WDZKaj0xBBdhR6YsXwLPS', 'P', '08912375823', 'admin', 1, NULL, NULL, NULL, NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

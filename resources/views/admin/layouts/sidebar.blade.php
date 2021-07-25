@@ -24,7 +24,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ ('') }}">
+            <a class="nav-link" href="{{  route('admin.riwayat') }}">
               <i class="mdi mdi-view-headline menu-icon"></i>
               <span class="menu-title">Riwayat Kegiatan</span>
             </a>

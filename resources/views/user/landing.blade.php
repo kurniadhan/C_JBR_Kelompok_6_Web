@@ -1,4 +1,5 @@
 @extends('user.layouts.template')
+
 @section('content')
 <main id="main">
 
@@ -22,10 +23,10 @@
         @foreach ($data as $kegiatan)
         <div id="portfolio-grid" class="row no-gutter" data-aos="fade-up" data-aos-delay="200">
           <div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">
-            <a href="{{url('work-single')}}" class="item-wrap fancybox">
+          <a href="{{ route('user.detail', $kegiatan->id) }}" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>{{($kegiatan->judul)}}</h3>
-                <span>{{($kegiatan->id_prodi)}}</span>
+                <span>{{($kegiatan->kategori)}}</span>
               </div>
               <img class="img-fluid" src="{{asset('/img/'.$kegiatan->nama_foto.'')}}">
             </a>
@@ -33,19 +34,6 @@
         @endforeach
           
         </div>
-      </div>
-    </div>
-
-    
-
-
-   
-          
-
-          
-
-        </div>
-
       </div>
     </div>
   </main>
