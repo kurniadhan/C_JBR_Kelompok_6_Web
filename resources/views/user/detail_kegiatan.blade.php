@@ -7,7 +7,7 @@
       <div class="container">
         <div class="row align-items-stretch">
           <div class="col-md-8" data-aos="fade-up">
-          <img src="{{ asset('img/' . $kegiatan->nama_foto) }}" alt="Image" class="img-fluid">
+          <img src="{{ asset('frontend/img/' . $kegiatan->nama_foto) }}" alt="Image" class="img-fluid">
           </div>
           <div class="col-md-3 ml-auto" data-aos="fade-up" data-aos-delay="100">
           <div class="sticky-content">

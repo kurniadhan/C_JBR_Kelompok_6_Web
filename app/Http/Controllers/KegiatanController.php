@@ -70,6 +70,7 @@ class KegiatanController extends Controller
      */
     public function store(Request $request)
     {
+        $id_user = Auth()->user()->id;
         $file = $request->file('img');
         if (empty($file)){
             return redirect()->route('kegiatan.create')->with('error', 'Foto Tidak Boleh Kosong!');
@@ -85,7 +86,7 @@ class KegiatanController extends Controller
         }
         
         $namaFoto = uniqid() . '_' . 'pamflet_kegiatan' . '.' . $file->getClientOriginalExtension();
-        $file->move(public_path('img'), $namaFoto);
+        $file->move(public_path('frontend/img'), $namaFoto);
 
         DB::table('kegiatan')->insert([
           'judul' => $request->judul,
@@ -104,6 +105,7 @@ class KegiatanController extends Controller
           'link_meet' => 'https://' . $request->link_meet,
           'deskripsi' => $request->deskripsi,
           'status' => 1,
+          'id_user' => $id_user,
         ]);
 
         return redirect()->route('admin.kegiatan')->with('success', 'Kegiatan Berhasil Ditambahkan!');
@@ -144,13 +146,14 @@ class KegiatanController extends Controller
     public function update(Request $request, $id)
     {
         $kegiatan = Kegiatan::find($id);
+        $id_user = Auth()->user()->id;
         $oldImg = $request->oldImg;
         $file = $request->file('img');
 
         if (!empty($file)){
             $namaFoto = uniqid() . '_' . 'pamflet_kegiatan' . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('img'), $namaFoto);
-            unlink("img/" . $oldImg);
+            $file->move(public_path('frontend/img'), $namaFoto);
+            unlink("frontend/img/" . $oldImg);
         } else {
             $namaFoto = $oldImg;
         }
@@ -181,6 +184,7 @@ class KegiatanController extends Controller
             'link_meet' => $request->link_meet,
             'deskripsi' => $request->deskripsi,
             'status' => 1,
+            'id_user' => $id_user,
         ]);
 
         return redirect()->route('admin.kegiatan')->with('success', 'Kegiatan Berhasil di Update!');
@@ -219,7 +223,7 @@ class KegiatanController extends Controller
         $kegiatan = Kegiatan::find($id);
         $image = $kegiatan->nama_foto;
         Kegiatan::where('id', $id)->delete();
-        unlink("img/" . $image);
+        unlink("frontend/img/" . $image);
         return redirect()->route('admin.kegiatan')->with('error', 'Kegiatan Berhasil Dihapus!'); 
     }
     

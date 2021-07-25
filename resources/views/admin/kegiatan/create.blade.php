@@ -12,7 +12,7 @@
 			@endif
 			<form class="forms-sample" method="POST" action="{{ route('kegiatan.store') }}" enctype="multipart/form-data">
 				@csrf
-
+				
 				<div class="form-group">
 					<label for="judul">Judul Kegiatan</label>
 					<input type="text" class="form-control" name="judul" placeholder="Judul Kegiatan" required>

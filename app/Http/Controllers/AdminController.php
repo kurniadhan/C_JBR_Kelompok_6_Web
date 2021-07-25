@@ -70,7 +70,6 @@ class AdminController extends Controller
           'nama' => $request->nama,
           'email' => $request->email,
           'notelp' => $request->notelp,
-          'id_jurusan' => $request->jurusan,
         ]);
 
         return redirect()->route('admin.dashboard')->with('success', 'Profile Berhasil Diupdate!');

@@ -59,7 +59,7 @@
               <td>{{ $kegiatan->jenis }}</td>
               <td>{{ $kegiatan->jurusan }}</td>
               <td>
-                  <a href="{{ url('img/' . $kegiatan->nama_foto) }}" target="_blank">Lihat Gambar</a>
+                  <a href="{{ url('frontend/img/' . $kegiatan->nama_foto) }}" target="_blank">Lihat Gambar</a>
               </td>
               <td style="text-align: center;">
                 <a href="{{ route('kegiatan.edit', $kegiatan->id) }}"><i class="btn btn-outline-primary btn-sm mdi mdi-pencil"></i></a>

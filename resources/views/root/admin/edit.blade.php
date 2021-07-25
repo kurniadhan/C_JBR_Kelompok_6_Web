@@ -15,7 +15,7 @@
 				</div>
 				<div class="form-group">
 					<label for="email">Email address</label>
-					<input type="email" class="form-control" name="email" placeholder="Email@Example" value="{{ $admin->email }}">
+					<input type="text" class="form-control" name="email" placeholder="Email@Example" value="{{ $admin->email }}">
 				</div>
 				<div class="form-group">
 					<label for="jenis_kelamin">Jenis Kelamin</label>

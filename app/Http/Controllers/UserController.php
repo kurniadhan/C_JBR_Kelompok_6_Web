@@ -11,8 +11,10 @@ class UserController extends Controller
 {
     public function index()
     {
-      //$data = DB::table('kegiatan')->get();
-      $data = DB::table('kegiatan')->orderBy('tgl_pelaksanaan', 'asc')->paginate(6);
+      $data = DB::table('kegiatan')
+              ->orderBy('tgl_pelaksanaan', 'desc')
+              ->where('status', 1)
+              ->paginate(9);
       return view('user.dashboard', compact('data'));
     }
 
