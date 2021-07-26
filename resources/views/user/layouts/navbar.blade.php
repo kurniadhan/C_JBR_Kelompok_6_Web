@@ -26,7 +26,7 @@
 
   <nav class="navbar navbar-light custom-navbar">
     <div class="container">
-      <a class="navbar-brand" href="index.html">SI KEMAH.</a>
+      <a class="navbar-brand" href="{{ route('user.dashboard') }}">SI KEMAH.</a>
 
       <a href="#" class="burger" data-toggle="collapse" data-target="#main-navbar">
         <span></span>

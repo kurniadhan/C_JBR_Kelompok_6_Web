@@ -38,7 +38,7 @@ class AdminController extends Controller
                 ->join('jurusan', 'jurusan.id', '=', 'users.id_jurusan')
                 ->select('users.*', 'prodi.prodi', 'jurusan.jurusan')
                 ->where([
-                    ['level', 'admin']
+                    ['level', 'Admin']
                 ])
                 ->get();
         return view('root/admin.index', compact('no', 'data'));
@@ -138,7 +138,7 @@ class AdminController extends Controller
           'notelp' => $request->notelp,
           'id_prodi' => $request->prodi,
           'id_jurusan' => $data->id_jurusan,
-          'level' => 'admin',
+          'level' => 'Admin',
         ]);
 
         return redirect()->route('root.admin')->with('success', 'Admin Berhasil Ditambahkan!');
